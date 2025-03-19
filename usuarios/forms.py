@@ -16,7 +16,7 @@ class RegistroForm(forms.ModelForm):
     class Meta:
         model = Usuario
         # Se incluyen los campos que deseas que el usuario complete
-        fields = ['nombre', 'email', 'password', 'dni']
+        fields = ['nombre', 'email','dni', 'password' ]
 
     def clean(self):
         cleaned_data = super().clean()
