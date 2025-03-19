@@ -1,8 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import RegistroForm
-from django.contrib.auth import authenticate, login
-
+from .models import Usuario
 def index(request):
     return HttpResponse("Hello, desde Usuarios.")
 
@@ -23,17 +22,22 @@ def registro(request):
 
 def login(request):
     error = None
-    if request.method == "POST":
-        email = request.POST.get("email")
-        password = request.POST.get("password")
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
         
-        # Si tu autenticación usa el email como username, de lo contrario, deberás ajustarlo
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')  # Redirige a la página principal u otra de tu elección
-        else:
+        try:
+            usuario = Usuario.objects.get(email=email)
+            # Nota: En un entorno real, la contraseña debe estar hasheada y utilizar
+            # un método de verificación, como por ejemplo, el método check_password().
+            if usuario.password == password:
+                # Guardamos el ID del usuario en la sesión para "loguearlo"
+                request.session['usuario_id'] = usuario.usuario_id
+                return redirect('home')  # Redirige a la página principal u otra deseada
+            else:
+                error = "Email o contraseña incorrectos."
+        except Usuario.DoesNotExist:
             error = "Email o contraseña incorrectos."
     
-    return render(request, "usuarios/login.html", {"error": error})
+    return render(request, 'login.html', {'error': error})
 
