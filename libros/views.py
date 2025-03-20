@@ -16,6 +16,7 @@ def alta_libro(request):
     if request.method == 'POST':
         form = LibroForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.usuario_id = request.session.get('usuario_id')
             form.save()
             return redirect('libros:index')  # Redirige a la lista de libros, por ejemplo.
     else:
