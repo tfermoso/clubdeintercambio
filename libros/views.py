@@ -28,3 +28,6 @@ def borrar(request, libro_id):
     libro.delete()
     return redirect('libros:index')
   
+def ver(request, libro_id):
+    libro = Libro.objects.get(libro_id=libro_id)
+    return render(request, 'ver.html', {'libro': libro})

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Detalle del libro</h3>
+    <hr>
+    <h4>{{ libro.titulo }}</h4>
+    <p>{{ libro.descripcion }}</p>
+    <img src="{{ libro.imagen.url }}" alt="" width="200">
+    <hr>
+    <a href="{% url 'libros:index' %}">Volver</a>
+{% endblock %}
