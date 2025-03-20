@@ -2,6 +2,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Inicio</h1>
-    <p>Esta es la pagina de inicio</p>
+    <h3>Listados de libros</h3>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.descripcion }}</td>
+                    <td><img src="" alt="" width="100"></td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            {% endfor %}
+    </table>
 {% endblock %}
