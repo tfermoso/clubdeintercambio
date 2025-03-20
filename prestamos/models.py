@@ -11,7 +11,7 @@ class Estado(models.Model):
 
 class Prestamo(models.Model):
     prestamos_id = models.AutoField(primary_key=True)
-    libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE,related_name='prestamos') # Libro que se presta
     # Usuario que solicita el préstamo
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha_solicitud = models.DateField(auto_now_add=True)

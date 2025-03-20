@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Libro
 from .forms import LibroForm
+from prestamos.models import Prestamo, Estado
 
 
 def index(request):
@@ -30,4 +31,5 @@ def borrar(request, libro_id):
   
 def ver(request, libro_id):
     libro = Libro.objects.get(libro_id=libro_id)
-    return render(request, 'ver.html', {'libro': libro})
+    prestamos = libro.prestamos.all()
+    return render(request, 'ver.html', {'libro': libro, 'prestamos': prestamos})
