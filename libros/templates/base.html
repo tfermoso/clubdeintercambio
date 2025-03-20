@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
 </head>
+
 <body>
     <nav>
-        <!-- Mostrar nombre de usuario logeado y cerrar sesion-->
-        {% if user.is_authenticated %}
-            <p>Hola, {{ user.username }}</p>
-            <a href="{% url 'logout' %}">Cerrar sesion</a>
-        {% endif %}
-        <a href="{% url '' %}">Inicio</a>
-        <a href="{% url 'libros' %}">Libros</a>
-        <a href="{% url 'prestamos' %}">Prestamos</a>
+        <!-- Mostrar nombre de usuario logeado y cerrar sesion-->        
+        <p>Hola, {{ nombre }}</p>
+        <a href="{% url 'usuarios:login' %}">Cerrar sesion</a>
+        <a href="{% url 'usuarios:login' %}">Inicio</a>
+        <a href="{% url 'libros:index' %}">Libros</a>
+        <a href="{% url 'prestamos:index' %}">Prestamos</a>
     </nav>
     {% block content %}
 
@@ -24,4 +24,5 @@
         <p>Este es el pie de pagina</p>
     </footer>
 </body>
+
 </html>
