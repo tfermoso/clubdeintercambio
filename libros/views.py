@@ -20,4 +20,4 @@ def alta_libro(request):
             return redirect('libros:index')  # Redirige a la lista de libros, por ejemplo.
     else:
         form = LibroForm()
-    return render(request, 'libros/alta_libro.html', {'form': form})
+    return render(request, 'alta_libro.html', {'form': form})
