@@ -11,7 +11,7 @@
 <body>
     <nav>
         <!-- Mostrar nombre de usuario logeado y cerrar sesion-->        
-        <p>Hola, {{ nombre }}</p>
+        <p>Hola, {{ request.session.nombre }}</p>
         <a href="{% url 'usuarios:login' %}">Cerrar sesion</a>
         <a href="{% url 'usuarios:login' %}">Inicio</a>
         <a href="{% url 'libros:index' %}">Libros</a>
