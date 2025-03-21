@@ -14,6 +14,9 @@ def index(request):
  
 def solicitar(request, libro_id):
     libro = Libro.objects.get(libro_id=libro_id)
+    #no solicitar libro ya solicitado
+    if(Prestamo.objects.filter(libro_id=libro_id,estado_id=1)):
+        return redirect('prestamos:index')
     prestamo = Prestamo(libro=libro, usuario_id=request.session.get('usuario_id'), estado_id=1)
     prestamo.save()
     return redirect('prestamos:index')  # Redirige a la lista de libros, por ejemplo.   
