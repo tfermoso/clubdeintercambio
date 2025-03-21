@@ -1,0 +1,15 @@
+<!--cargar plantilla base.html-->
+{% extends 'base.html' %}
+
+{% block content %}
+ <h1>Libros de prestamo</h1>
+    <hr>
+    <!--mostrar libros-->
+    {% for libro in libros %}
+        <div>
+            <h2>{{ libro.titulo }}</h2>
+            <p>{{ libro.descripcion }}</p>
+            <img src="{{ libro.imagen.url }}" alt="" width="100">
+        </div>
+    {% endfor %}
+{% endblock %}
