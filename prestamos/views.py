@@ -20,3 +20,15 @@ def solicitar(request, libro_id):
     prestamo = Prestamo(libro=libro, usuario_id=request.session.get('usuario_id'), estado_id=1)
     prestamo.save()
     return redirect('prestamos:index')  # Redirige a la lista de libros, por ejemplo.   
+
+def aceptar(request, prestamos_id):
+    prestamo = Prestamo.objects.get(prestamos_id=prestamos_id,estado_id=1)
+    prestamo.estado_id = 3
+    prestamo.save()
+    return redirect('prestamos:index')  # Redirige a la lista de libros, por ejemplo.
+
+def cancelar(request, prestamos_id):
+    prestamo = Prestamo.objects.get(prestamos_id=prestamos_id,estado_id=1)
+    prestamo.estado_id = 2
+    prestamo.save()
+    return redirect('prestamos:index')  # Redirige a la lista de libros, por ejemplo.
