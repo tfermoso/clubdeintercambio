@@ -13,4 +13,24 @@
             <a href="{% url 'prestamos:solicitar' libro.libro_id%}"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
     {% endfor %}
+    <hr>
+    <h2>Solicitudes realizadas</h2>
+    <table>
+        <thead>
+            <th>titulo</th>
+            <th>fecha solicitud</th>
+            <th>fecha devolucion</th>
+            <th>estado</th>            
+        </thead>
+        <tbody>
+            {% for prestamo in solicitudes_prestamos %}
+                <tr>
+                    <td>{{ prestamo.libro.titulo }}</td>
+                    <td>{{ prestamo.fecha_solicitud }}</td>
+                    <td>{{ prestamo.fecha_devolucion }}</td>
+                    <td>{{ prestamo.estado.descripcion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
