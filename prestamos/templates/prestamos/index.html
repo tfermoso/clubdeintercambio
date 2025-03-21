@@ -10,7 +10,7 @@
             <h2>{{ libro.titulo }}</h2>
             <p>{{ libro.descripcion }}</p>
             <img src="{{ libro.imagen.url }}" alt="" width="100">
-            <a href="{% url 'prestasmos:solicitar' libro.libro_id%}"><i class="fa-solid fa-basket-shopping"></i></a>
+            <a href="{% url 'prestamos:solicitar' libro.libro_id%}"><i class="fa-solid fa-basket-shopping"></i></a>
         </div>
     {% endfor %}
 {% endblock %}
